@@ -1,4 +1,4 @@
-m_data.da# --------------------------------------------------------
+# --------------------------------------------------------
 # Tensorflow Faster R-CNN
 # Licensed under The MIT License [see LICENSE for details]
 # Written by Jiasen Lu, Jianwei Yang, based on code from Ross Girshick
@@ -16,7 +16,7 @@ import pprint
 import pdb
 import time
 import cv2
-import cPickle
+import _pickle as cPickle
 import torch
 from torch.autograd import Variable
 import torch.nn as nn
@@ -215,7 +215,7 @@ if __name__ == '__main__':
       im_data_pt = im_data_pt.permute(0, 3, 1, 2)
       im_info_pt = torch.from_numpy(im_info_np)
 
-      im_datath torch.no_grad():
+      with torch.no_grad():
           im_data.data.resize_(im_data_pt.size()).copy_(im_data_pt)
           im_info.data.resize_(im_info_pt.size()).copy_(im_info_pt)
           gt_boxes.data.resize_(1, 1, 5).zero_()

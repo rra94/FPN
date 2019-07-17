@@ -5,6 +5,8 @@ CUDA_PATH=/usr/local/cuda/
 python setup.py build_ext --inplace
 rm -rf build
 
+echo "Done1"
+
 # compile NMS
 cd model/nms/src
 echo "Compiling nms kernels by nvcc..."
@@ -12,7 +14,7 @@ nvcc -c -o nms_cuda_kernel.cu.o nms_cuda_kernel.cu \
 	 -D GOOGLE_CUDA=1 -x cu -Xcompiler -fPIC -arch=sm_52
 cd ../
 python build.py
-
+echo "Done2"
 # compile roi_pooling
 cd ../../
 cd model/roi_pooling/src

@@ -6,7 +6,7 @@
 
 import xml.etree.ElementTree as ET
 import os
-import cPickle
+import _pickle as cPickle
 import numpy as np
 from voc_eval import voc_ap
 
