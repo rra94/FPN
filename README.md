@@ -1,2 +1,2 @@
 # FPN
-BoundingBox AP iusing FPN with RCNN and Resnet Backbone in Pytorch 
+BoundingBox AP using FPN with RCNN and Resnet Backbone in Pytorch 
