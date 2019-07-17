@@ -108,7 +108,7 @@ class _ProposalLayer_FPN(nn.Module):
             # 7. take after_nms_topN (e.g. 300)
             # 8. return the top proposals (-> RoIs top)
 
-            keep_idx_i = nms(torch.cat((proposals_single, scores_single), 1), nms_thresh)
+            keep_idx_i = nms((proposals_single, scores_single.sqeeze(1), nms_thresh)
             keep_idx_i = keep_idx_i.long().view(-1)
 
             if post_nms_topN > 0:

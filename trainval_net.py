@@ -319,10 +319,12 @@ if __name__ == '__main__':
 
     for step in range(iters_per_epoch):
       data = data_iter.next()
-      im_data.data.resize_(data[0].size()).copy_(data[0])
-      im_info.data.resize_(data[1].size()).copy_(data[1])
-      gt_boxes.data.resize_(data[2].size()).copy_(data[2])
-      num_boxes.data.resize_(data[3].size()).copy_(data[3])
+      with torch.no_grad():
+
+        im_data.data.resize_(data[0].size()).copy_(data[0])
+        im_info.data.resize_(data[1].size()).copy_(data[1])
+        gt_boxes.data.resize_(data[2].size()).copy_(data[2])
+        num_boxes.data.resize_(data[3].size()).copy_(data[3])
 
       FPN.zero_grad()
       _, _, _, rpn_loss_cls, rpn_loss_box, \

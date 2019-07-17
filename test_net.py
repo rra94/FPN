@@ -221,10 +221,11 @@ if __name__ == '__main__':
   empty_array = np.transpose(np.array([[],[],[],[],[]]), (1,0))
   for i in range(num_images):
       data = data_iter.next()
-      im_data.data.resize_(data[0].size()).copy_(data[0])
-      im_info.data.resize_(data[1].size()).copy_(data[1])
-      gt_boxes.data.resize_(data[2].size()).copy_(data[2])
-      num_boxes.data.resize_(data[3].size()).copy_(data[3])
+      with torcxh.no_grad():
+        im_data.data.resize_(data[0].size()).copy_(data[0])
+        im_info.data.resize_(data[1].size()).copy_(data[1])
+        gt_boxes.data.resize_(data[2].size()).copy_(data[2])
+        num_boxes.data.resize_(data[3].size()).copy_(data[3])
 
       det_tic = time.time()
       rois, cls_prob, bbox_pred, \

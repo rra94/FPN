@@ -1,4 +1,4 @@
-# --------------------------------------------------------
+m_data.da# --------------------------------------------------------
 # Tensorflow Faster R-CNN
 # Licensed under The MIT License [see LICENSE for details]
 # Written by Jiasen Lu, Jianwei Yang, based on code from Ross Girshick
@@ -215,10 +215,11 @@ if __name__ == '__main__':
       im_data_pt = im_data_pt.permute(0, 3, 1, 2)
       im_info_pt = torch.from_numpy(im_info_np)
 
-      im_data.data.resize_(im_data_pt.size()).copy_(im_data_pt)
-      im_info.data.resize_(im_info_pt.size()).copy_(im_info_pt)
-      gt_boxes.data.resize_(1, 1, 5).zero_()
-      num_boxes.data.resize_(1).zero_()
+      im_datath torch.no_grad():
+          im_data.data.resize_(im_data_pt.size()).copy_(im_data_pt)
+          im_info.data.resize_(im_info_pt.size()).copy_(im_info_pt)
+          gt_boxes.data.resize_(1, 1, 5).zero_()
+          num_boxes.data.resize_(1).zero_()
 
       # pdb.set_trace()
 
